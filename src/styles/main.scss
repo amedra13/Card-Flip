@@ -1,0 +1,20 @@
+$primary-bg: #457b9d;
+$primary-text: #f1faee;
+$primary-shade: #1d3557;
+$primary-font: 'Nunito', sans-serif;
+
+:root {
+	--main-color: #{$primary-bg};
+	--main-text: #{$primary-text};
+	--main-shade: #{$primary-shade};
+	--main-font: #{$primary-font};
+}
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+.App {
+	background-color: var(--main-color);
+	width: 100vw;
+	height: 100vh;
+}
