@@ -1,6 +1,6 @@
-$primary-bg: #457b9d;
+$primary-bg: #003249;
 $primary-text: #f1faee;
-$primary-shade: #1d3557;
+$primary-shade: #007ea7;
 $primary-font: 'Nunito', sans-serif;
 
 :root {
@@ -17,4 +17,5 @@ $primary-font: 'Nunito', sans-serif;
 	background-color: var(--main-color);
 	width: 100vw;
 	height: 100vh;
+	display: flex;
 }

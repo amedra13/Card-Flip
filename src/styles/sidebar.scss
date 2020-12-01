@@ -19,11 +19,17 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	width: 100%;
+	width: 90%;
+	margin: 0 auto;
 	color: var(--main-text);
 	font-family: var(--main-font);
 	font-size: 10px;
-	border-bottom: 1px solid var(--main-shade);
+	transition: all 100ms ease-in;
+	border-radius: 30px;
+}
+.sideOption:hover {
+	background-color: var(--main-text);
+	color: var(--main-shade);
 }
 .sidebar__icon {
 	font-size: 100px !important;

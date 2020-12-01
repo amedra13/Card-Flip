@@ -1,0 +1,32 @@
+.header {
+	height: 40px;
+	width: 100%;
+	margin: 15px 20px;
+	display: flex;
+	background-color: var(--main-color);
+}
+
+.header__input {
+	flex: 1;
+	padding: 0 15px;
+	input {
+		height: 100%;
+		width: 100%;
+		padding: 0 20px;
+		background-color: var(--main-text);
+		color: var(--main-shade);
+		border-radius: 30px;
+		border: none;
+	}
+	input:focus {
+		outline: none;
+	}
+}
+
+.header__icons {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 20%;
+	background-color: var(--main-color);
+}
