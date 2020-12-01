@@ -17,5 +17,10 @@ $primary-font: 'Nunito', sans-serif;
 	background-color: var(--main-color);
 	width: 100vw;
 	height: 100vh;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	grid-template-rows: 1fr 8fr;
+	grid-template-areas:
+		'sidebar header'
+		'sidebar main';
 }

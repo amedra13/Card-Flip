@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/dashboard.scss';
+import '../../../styles/dashboard.scss';
 
 const Dashboard = () => {
 	return (
-		<div className="dashboard">
+		<div className="dashboard mainContent">
 			<h1>Dashboard Component</h1>
 		</div>
 	);

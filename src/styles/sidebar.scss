@@ -1,10 +1,13 @@
 .sidebar {
+	grid-area: sidebar;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	width: 15%;
-	height: 100%;
+	align-self: center;
+	width: 95%;
+	height: 95%;
+	margin: 0 auto;
 	border: 1px solid var(--main-text);
 	border-radius: 3px;
 	h3 {

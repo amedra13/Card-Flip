@@ -12,22 +12,22 @@ const SideOption = ({ option }) => {
 
 	switch (option) {
 		case 'Dashboard':
-			optionIcon = <HomeIcon fontSize="medium" />;
+			optionIcon = <HomeIcon />;
 			break;
 		case 'Inventory':
-			optionIcon = <StorageIcon fontSize="medium" />;
+			optionIcon = <StorageIcon />;
 			break;
 		case 'Submissions':
-			optionIcon = <MarkunreadMailboxIcon fontSize="medium" />;
+			optionIcon = <MarkunreadMailboxIcon />;
 			break;
 		case 'Sales':
-			optionIcon = <TrendingUpIcon fontSize="medium" />;
+			optionIcon = <TrendingUpIcon />;
 			break;
 		case 'Settings':
-			optionIcon = <SettingsIcon fontSize="medium" />;
+			optionIcon = <SettingsIcon />;
 			break;
 		case 'Logout':
-			optionIcon = <ExitToAppIcon fontSize="medium" />;
+			optionIcon = <ExitToAppIcon />;
 			break;
 		default:
 			break;
