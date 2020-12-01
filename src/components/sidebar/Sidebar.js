@@ -5,13 +5,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import '../../styles/sidebar.scss';
 
 const Sidebar = () => {
-	const menuOptions = [
-		'Dashboard',
-		'Inventory',
-		'Submissions',
-		'Sales',
-		'Settings',
-	];
+	const menuOptions = ['Dashboard', 'Inventory', 'Submissions', 'Sales'];
 	const accountOptions = ['Settings', 'Logout'];
 
 	return (

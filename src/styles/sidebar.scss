@@ -20,14 +20,16 @@
 	align-items: center;
 	justify-content: flex-start;
 	width: 90%;
-	margin: 0 auto;
+	margin: 5px auto;
+	text-decoration: none;
 	color: var(--main-text);
 	font-family: var(--main-font);
 	font-size: 10px;
 	transition: all 100ms ease-in;
 	border-radius: 30px;
 }
-.sideOption:hover {
+.sideOption:hover,
+.selected {
 	background-color: var(--main-text);
 	color: var(--main-shade);
 }

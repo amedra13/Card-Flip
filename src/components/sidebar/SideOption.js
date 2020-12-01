@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import StorageIcon from '@material-ui/icons/Storage';
 import MarkunreadMailboxIcon from '@material-ui/icons/MarkunreadMailbox';
@@ -33,10 +34,14 @@ const SideOption = ({ option }) => {
 	}
 
 	return (
-		<div className="sideOption">
+		<NavLink
+			to={`/${option}`}
+			className="sideOption"
+			activeClassName="selected"
+		>
 			{optionIcon}
 			<h2>{option}</h2>
-		</div>
+		</NavLink>
 	);
 };
 
