@@ -1,21 +1,17 @@
 import React from 'react';
 
-const CardItem = () => {
-	// const status = [
-	// 	'Date Bought',
-	// 	'Year',
-	// 	'Brand',
-	// 	'Parallel',
-	// 	'Player Name',
-	// 	'Grade',
-	// 	'Cost',
-	// 	'Sold',
-	// 	'Profit',
-	// ];
+const CardItem = ({ card }) => {
 	return (
-		<div className="cardItem">
-			<h1>First Card Component</h1>
-		</div>
+		<ul className="cardItem">
+			<li>{card.year}</li>
+			<li>{card.brand}</li>
+			<li>{card.parallel}</li>
+			<li>{card.name}</li>
+			<li>{card.grade}</li>
+			<li>${card.cost}</li>
+			<li>${card.sold}</li>
+			<li>${card.profit}</li>
+		</ul>
 	);
 };
 

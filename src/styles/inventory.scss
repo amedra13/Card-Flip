@@ -1,1 +1,39 @@
 @import './mainContent.scss';
+
+.inventory__description {
+	background-color: var(--main-shade);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	padding: 0;
+	margin: 10px 0;
+	li {
+		list-style-type: none;
+		margin: 10px 5px;
+		border: 1px solid red;
+		text-align: center;
+		font-family: var(--main-font);
+	}
+}
+
+.cardItem {
+	background-color: var(--main-text);
+	border-radius: 3px;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	padding: 0;
+	margin: 10px 0;
+	li {
+		list-style-type: none;
+		margin: 10px 5px;
+		border: 1px solid red;
+		width: 150px;
+		border: 1px solid var(--main-shade);
+		text-align: center;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: var(--main-font);
+	}
+}
