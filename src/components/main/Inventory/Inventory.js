@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import CardItem from './CardItem';
-import db from '../../../database';
+import CostAnalysis from './CostAnalysis';
+import AddCard from './AddCard';
 
+import db from '../../../database';
 import '../../../styles/inventory.scss';
 
 const Inventory = () => {
 	const [inventory, setInventory] = useState([]);
+	const [openForm, setOpenForm] = useState(false);
 
 	useEffect(() => {
 		let data = [];
@@ -13,14 +16,11 @@ const Inventory = () => {
 		db.collection('inventory').onSnapshot((inventory) => {
 			inventory.docChanges().forEach((item) => {
 				let card = { ...item.doc.data(), id: item.doc.id };
-				console.log(card);
 				data.push(card);
 			});
 
 			setInventory(data);
 		});
-
-		console.log(data);
 	}, []);
 	return (
 		<div className="inventory mainContent">
@@ -34,10 +34,13 @@ const Inventory = () => {
 				<li>Sold</li>
 				<li>Profit</li>
 			</ul>
-
-			{inventory.map((item) => (
-				<CardItem key={item.id} card={item} />
-			))}
+			<div className="inventory__itemContainer">
+				{inventory &&
+					inventory.map((item) => <CardItem key={item.id} card={item} />)}
+				{inventory.length > 0 && <CostAnalysis inventory={inventory} />}
+				<button onClick={() => setOpenForm(!openForm)}>Add Item</button>
+				{openForm && <AddCard />}
+			</div>
 		</div>
 	);
 };

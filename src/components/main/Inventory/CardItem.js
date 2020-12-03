@@ -8,9 +8,9 @@ const CardItem = ({ card }) => {
 			<li>{card.parallel}</li>
 			<li>{card.name}</li>
 			<li>{card.grade}</li>
-			<li>${card.cost}</li>
-			<li>${card.sold}</li>
-			<li>${card.profit}</li>
+			<li>${card.cost.toFixed(2)}</li>
+			<li>${card.sold.toFixed(2)}</li>
+			<li>${card.profit.toFixed(2)}</li>
 		</ul>
 	);
 };

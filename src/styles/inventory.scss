@@ -1,20 +1,34 @@
 @import './mainContent.scss';
 
+.inventory {
+	position: relative;
+}
+
 .inventory__description {
+	position: absolute;
+	width: 100%;
 	background-color: var(--main-shade);
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
+	height: 50px;
 	padding: 0;
-	margin: 10px 0;
 	li {
 		list-style-type: none;
 		margin: 10px 5px;
-		border: 1px solid red;
-		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bold;
 		font-family: var(--main-font);
 	}
+}
+
+.inventory__itemContainer {
+	height: 100%;
+	width: 100%;
+	padding-top: 50px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.527);
 }
 
 .cardItem {
@@ -23,17 +37,78 @@
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
 	padding: 0;
+	width: 100%;
 	margin: 10px 0;
 	li {
 		list-style-type: none;
 		margin: 10px 5px;
 		border: 1px solid red;
-		width: 150px;
 		border: 1px solid var(--main-shade);
 		text-align: center;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-family: var(--main-font);
+	}
+}
+
+.costAnalysis {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgb(0, 255, 127);
+	background: linear-gradient(
+		261deg,
+		rgba(0, 255, 127, 1) 0%,
+		rgba(0, 92, 44, 1) 100%
+	);
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-areas: 'empty empty empty empty empty cost sales profit';
+
+	.cost {
+		grid-area: cost;
+	}
+
+	.sales {
+		grid-area: sales;
+	}
+
+	.profit {
+		grid-area: profit;
+	}
+}
+
+.addCard {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: gray;
+	border-radius: 10px;
+	border: 2px solid white;
+	top: 10%;
+	left: 20%;
+	height: 60vh;
+	width: 30vw;
+	* {
+		margin: 10px;
+	}
+}
+
+.addCard__form {
+	border-radius: 10px;
+	border: 2px solid green;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	div {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		margin: 0;
 	}
 }
