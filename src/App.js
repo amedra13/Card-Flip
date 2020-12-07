@@ -1,12 +1,26 @@
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import './styles/main.scss';
 import Sidebar from './components/sidebar/Sidebar';
 import Header from './components/header/Header';
 import Dashboard from './components/main/Dashboard/Dashboard';
 import Inventory from './components/main//Inventory/Inventory';
-
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import * as actions from './store/actions/actions';
+import db from './database';
+const App = (props) => {
+	useEffect(() => {
+		let data = [];
 
-function App() {
+		db.collection('inventory').onSnapshot((inventory) => {
+			inventory.docChanges().forEach((item) => {
+				let card = { ...item.doc.data(), id: item.doc.id };
+				data.push(card);
+			});
+
+			props.onSetInventory(data);
+		});
+	}, [props]);
 	return (
 		<BrowserRouter>
 			<div className="App">
@@ -23,6 +37,12 @@ function App() {
 			</div>
 		</BrowserRouter>
 	);
-}
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onSetInventory: (data) => dispatch(actions.setInventory(data)),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(App);

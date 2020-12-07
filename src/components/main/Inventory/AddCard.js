@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../../../store/actions/actions';
 import db from '../../../database';
 
-const AddCard = () => {
+const AddCard = (props) => {
 	const [year, setYear] = useState('');
 	const [brand, setBrand] = useState('');
 	const [parallel, setParallel] = useState('');
@@ -28,6 +31,7 @@ const AddCard = () => {
 			.then((res) => {
 				console.log(res);
 			});
+		props.onClose();
 	};
 	return (
 		<div className="addCard">
@@ -40,6 +44,7 @@ const AddCard = () => {
 						id="year"
 						value={year}
 						onChange={(e) => setYear(e.target.value)}
+						required
 					/>
 				</div>
 				<div>
@@ -49,6 +54,7 @@ const AddCard = () => {
 						id="brand"
 						value={brand}
 						onChange={(e) => setBrand(e.target.value)}
+						required
 					/>
 				</div>
 				<div>
@@ -68,6 +74,7 @@ const AddCard = () => {
 						id="name"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
+						required
 					/>
 				</div>
 				<div>
@@ -76,6 +83,7 @@ const AddCard = () => {
 						type="number"
 						id="grade"
 						value={grade}
+						placeholder="(Optional)"
 						onChange={(e) => setGrade(e.target.value)}
 					/>
 				</div>
@@ -86,6 +94,7 @@ const AddCard = () => {
 						id="cost"
 						value={cost}
 						onChange={(e) => setCost(e.target.value)}
+						required
 					/>
 				</div>
 				<div>
@@ -104,4 +113,10 @@ const AddCard = () => {
 	);
 };
 
-export default AddCard;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onClose: () => dispatch(actions.addCard()),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(AddCard);

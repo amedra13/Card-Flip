@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import CardItem from './CardItem';
 import CostAnalysis from './CostAnalysis';
 import AddCard from './AddCard';
-
-import db from '../../../database';
+import * as actions from '../../../store/actions/actions';
 import '../../../styles/inventory.scss';
 
-const Inventory = () => {
-	const [inventory, setInventory] = useState([]);
-	const [openForm, setOpenForm] = useState(false);
-
-	useEffect(() => {
-		let data = [];
-
-		db.collection('inventory').onSnapshot((inventory) => {
-			inventory.docChanges().forEach((item) => {
-				let card = { ...item.doc.data(), id: item.doc.id };
-				data.push(card);
-			});
-
-			setInventory(data);
-		});
-	}, []);
+const Inventory = (props) => {
 	return (
 		<div className="inventory mainContent">
 			<ul className="inventory__description">
@@ -35,14 +20,28 @@ const Inventory = () => {
 				<li>Profit</li>
 			</ul>
 			<div className="inventory__itemContainer">
-				{inventory &&
-					inventory.map((item) => <CardItem key={item.id} card={item} />)}
-				{inventory.length > 0 && <CostAnalysis inventory={inventory} />}
-				<button onClick={() => setOpenForm(!openForm)}>Add Item</button>
-				{openForm && <AddCard />}
+				{props.inventory &&
+					props.inventory.map((item) => <CardItem key={item.id} card={item} />)}
+				{props.inventory.length > 0 && (
+					<CostAnalysis inventory={props.inventory} />
+				)}
+				<button onClick={() => props.onAddCard()}>Add Item</button>
+				{props.addCard && <AddCard />}
 			</div>
 		</div>
 	);
 };
 
-export default Inventory;
+const mapStateToProps = (state) => {
+	return {
+		addCard: state.addCard,
+		inventory: state.inventory,
+	};
+};
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onAddCard: () => dispatch(actions.addCard()),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inventory);
