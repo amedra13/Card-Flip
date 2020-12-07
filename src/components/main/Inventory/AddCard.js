@@ -108,6 +108,7 @@ const AddCard = (props) => {
 					/>
 				</div>
 				<button type="submit">Add Card to Inventory</button>
+				<button onClick={() => props.onClose()}>Close</button>
 			</form>
 		</div>
 	);
