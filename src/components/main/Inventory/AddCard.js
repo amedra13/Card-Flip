@@ -29,9 +29,8 @@ const AddCard = (props) => {
 		db.collection('inventory')
 			.add(newCard)
 			.then((res) => {
-				console.log(res);
+				props.onClose();
 			});
-		props.onClose();
 	};
 	return (
 		<div className="addCard">
