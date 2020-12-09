@@ -11,7 +11,8 @@ export const setInventory = (data) => {
 	};
 };
 
-export const setCost = (totalCost) => {
+export const setCost = (data) => {
+	let totalCost = data.reduce((cost, item) => (cost += item.cost), 0);
 	return {
 		type: 'SET_COST',
 		cost: totalCost,
