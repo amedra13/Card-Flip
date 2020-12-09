@@ -15,7 +15,7 @@ const App = (props) => {
 		db.collection('inventory').onSnapshot((inventory) => {
 			inventory.docChanges().forEach((item) => {
 				let card = { ...item.doc.data() };
-
+				console.log(item.type);
 				switch (item.type) {
 					case 'added':
 						data.push(card);
@@ -23,6 +23,10 @@ const App = (props) => {
 					case 'modified':
 						const index = data.findIndex((item) => item.id === card.id);
 						data[index] = card;
+						break;
+					case 'removedx':
+						const removedData = data.filter((item) => item.id !== card.id);
+						data = removedData;
 						break;
 					default:
 						break;

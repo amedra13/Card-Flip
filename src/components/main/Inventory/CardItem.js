@@ -32,6 +32,15 @@ const CardItem = ({ card, id }) => {
 			});
 	};
 
+	const deleteCard = () => {
+		db.collection('inventory')
+			.doc(id)
+			.delete()
+			.then((res) => {
+				console.log(`Deleted Card Item`);
+			});
+	};
+
 	return (
 		<form className={`cardItem ${editing && `active`}`}>
 			<input
@@ -72,19 +81,31 @@ const CardItem = ({ card, id }) => {
 			/>
 			{!editing ? (
 				<>
-					<IconButton className="carditem__editButton">
-						<EditIcon onClick={() => setEditing(true)} />
+					<IconButton
+						className="carditem__editButton"
+						onClick={() => setEditing(true)}
+					>
+						<EditIcon />
 					</IconButton>
-					<IconButton className="carditem__deleteButton">
+					<IconButton
+						className="carditem__deleteButton"
+						onClick={() => deleteCard()}
+					>
 						<DeleteIcon />
 					</IconButton>
 				</>
 			) : (
 				<>
-					<IconButton className="carditem__saveButton">
-						<SaveIcon onClick={() => editCard()} />
+					<IconButton
+						className="carditem__saveButton"
+						onClick={() => editCard()}
+					>
+						<SaveIcon />
 					</IconButton>
-					<IconButton className="carditem__deleteButton">
+					<IconButton
+						className="carditem__deleteButton"
+						onClick={() => deleteCard()}
+					>
 						<DeleteIcon />
 					</IconButton>
 				</>
