@@ -40,8 +40,7 @@
 	width: 100%;
 	margin: 5px 0;
 	transition: all 100ms ease-in-out;
-	li {
-		list-style-type: none;
+	input {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -52,6 +51,8 @@
 		font-family: var(--main-font);
 	}
 	.carditem__editButton {
+		width: 100%;
+		align-self: center;
 		visibility: hidden;
 	}
 }

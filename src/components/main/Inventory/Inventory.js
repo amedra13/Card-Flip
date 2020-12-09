@@ -20,7 +20,9 @@ const Inventory = (props) => {
 			</ul>
 			<div className="inventory__itemContainer">
 				{props.inventory &&
-					props.inventory.map((item) => <CardItem key={item.id} card={item} />)}
+					props.inventory.map((item) => (
+						<CardItem key={item.id} card={item} id={item.id} />
+					))}
 				{props.inventory.length > 0 && (
 					<CostAnalysis inventory={props.inventory} />
 				)}

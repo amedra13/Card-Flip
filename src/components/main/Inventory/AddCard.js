@@ -9,12 +9,15 @@ const AddCard = (props) => {
 	const [brand, setBrand] = useState('');
 	const [parallel, setParallel] = useState('Base');
 	const [name, setName] = useState('');
-	const [grade, setGrade] = useState('N/A');
+	const [grade, setGrade] = useState('');
 	const [cost, setCost] = useState(0);
 	// const [profit, setProfit] = useState(0)
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		let ref = db.collection('inventory').doc();
+		let id = ref.id;
+
 		const newCard = {
 			year: year,
 			brand: brand,
@@ -25,9 +28,11 @@ const AddCard = (props) => {
 			sold: false,
 			salePrice: 0,
 			profit: 0,
+			id: id,
 		};
 		db.collection('inventory')
-			.add(newCard)
+			.doc(id)
+			.set(newCard)
 			.then((res) => {
 				props.onClose();
 			});

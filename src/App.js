@@ -14,8 +14,19 @@ const App = (props) => {
 
 		db.collection('inventory').onSnapshot((inventory) => {
 			inventory.docChanges().forEach((item) => {
-				let card = { ...item.doc.data(), id: item.doc.id };
-				data.push(card);
+				let card = { ...item.doc.data() };
+
+				switch (item.type) {
+					case 'added':
+						data.push(card);
+						break;
+					case 'modified':
+						const index = data.findIndex((item) => item.id === card.id);
+						data[index] = card;
+						break;
+					default:
+						break;
+				}
 			});
 
 			props.onSetInventory(data);
