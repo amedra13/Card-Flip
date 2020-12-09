@@ -9,7 +9,7 @@
 	width: 100%;
 	background-color: var(--main-shade);
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
+	grid-template-columns: 75px repeat(6, 1fr);
 	height: 50px;
 	padding: 0;
 	li {
@@ -35,25 +35,36 @@
 	background-color: var(--main-text);
 	border-radius: 3px;
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
+	grid-template-columns: 75px repeat(6, 1fr);
 	padding: 0;
 	width: 100%;
-	margin: 10px 0;
+	margin: 5px 0;
+	transition: all 100ms ease-in-out;
 	li {
 		list-style-type: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin: 10px 5px;
-		border: 1px solid red;
-		border: 1px solid var(--main-shade);
-		text-align: center;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-family: var(--main-font);
 	}
+	.carditem__editButton {
+		visibility: hidden;
+	}
 }
-
+.cardItem:hover {
+	background-color: rgb(228, 228, 228);
+	.carditem__editButton {
+		border: 1px solid red;
+		visibility: visible;
+	}
+}
 .costAnalysis {
 	position: absolute;
+	height: 50px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -63,20 +74,16 @@
 		rgba(0, 255, 127, 1) 0%,
 		rgba(0, 92, 44, 1) 100%
 	);
-	display: grid;
-	grid-template-columns: repeat(8, 1fr);
-	grid-template-areas: 'empty empty empty empty empty cost sales profit';
 
 	.cost {
 		grid-area: cost;
-	}
-
-	.sales {
-		grid-area: sales;
-	}
-
-	.profit {
-		grid-area: profit;
+		height: 100%;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		h4 {
+			margin: 0 30px;
+		}
 	}
 }
 

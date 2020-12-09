@@ -10,14 +10,13 @@ const Inventory = (props) => {
 	return (
 		<div className="inventory mainContent">
 			<ul className="inventory__description">
+				<li></li>
 				<li>Year</li>
 				<li>Brand</li>
 				<li>Parallel</li>
 				<li>Player</li>
 				<li>Grade</li>
 				<li>Cost</li>
-				<li>Sold</li>
-				<li>Profit</li>
 			</ul>
 			<div className="inventory__itemContainer">
 				{props.inventory &&

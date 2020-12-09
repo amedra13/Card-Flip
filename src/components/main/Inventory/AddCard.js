@@ -7,11 +7,10 @@ import db from '../../../database';
 const AddCard = (props) => {
 	const [year, setYear] = useState('');
 	const [brand, setBrand] = useState('');
-	const [parallel, setParallel] = useState('');
+	const [parallel, setParallel] = useState('Base');
 	const [name, setName] = useState('');
-	const [grade, setGrade] = useState('');
+	const [grade, setGrade] = useState('N/A');
 	const [cost, setCost] = useState(0);
-	const [sale, setSale] = useState(0);
 	// const [profit, setProfit] = useState(0)
 
 	const submitHandler = (e) => {
@@ -21,10 +20,11 @@ const AddCard = (props) => {
 			brand: brand,
 			parallel: parallel,
 			name: name,
-			grade: Number(grade),
+			grade: grade,
 			cost: Number(cost),
-			sold: Number(sale),
-			profit: sale - cost,
+			sold: false,
+			salePrice: 0,
+			profit: 0,
 		};
 		db.collection('inventory')
 			.add(newCard)
@@ -94,16 +94,6 @@ const AddCard = (props) => {
 						value={cost}
 						onChange={(e) => setCost(e.target.value)}
 						required
-					/>
-				</div>
-				<div>
-					<label htmlFor="sale">Sold</label>
-					<input
-						type="number"
-						id="sale"
-						placeholder="(Optional)"
-						value={sale}
-						onChange={(e) => setSale(e.target.value)}
 					/>
 				</div>
 				<button type="submit">Add Card to Inventory</button>
