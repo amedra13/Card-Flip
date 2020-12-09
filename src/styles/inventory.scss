@@ -1,15 +1,25 @@
 @import './mainContent.scss';
 
+@mixin button_base {
+	width: 100%;
+	align-self: center;
+	visibility: hidden;
+}
+
+@mixin grid_columns {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr) 50px 50px;
+}
+
 .inventory {
 	position: relative;
 }
 
 .inventory__description {
+	@include grid_columns;
 	position: absolute;
 	width: 100%;
 	background-color: var(--main-shade);
-	display: grid;
-	grid-template-columns: 75px repeat(6, 1fr);
 	height: 50px;
 	padding: 0;
 	li {
@@ -26,24 +36,26 @@
 .inventory__itemContainer {
 	height: 100%;
 	width: 100%;
-	padding-top: 50px;
+	padding-top: 45px;
 	border-radius: 5px;
 	background-color: rgba(255, 255, 255, 0.527);
 }
 
 .cardItem {
+	@include grid_columns;
 	background-color: var(--main-text);
 	border-radius: 3px;
-	display: grid;
-	grid-template-columns: 75px repeat(6, 1fr);
 	padding: 0;
 	width: 100%;
-	margin: 5px 0;
+	margin: 5px auto;
 	transition: all 100ms ease-in-out;
 	input {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.23);
 		margin: 10px 5px;
 		white-space: nowrap;
 		overflow: hidden;
@@ -51,18 +63,42 @@
 		font-family: var(--main-font);
 	}
 	.carditem__editButton {
-		width: 100%;
-		align-self: center;
-		visibility: hidden;
+		@include button_base;
+		:hover {
+			color: rgb(6, 180, 6);
+		}
+	}
+	.carditem__deleteButton {
+		@include button_base;
+		:hover {
+			color: rgb(240, 51, 51);
+		}
+	}
+	.carditem__saveButton {
+		@include button_base;
+		:hover {
+			color: rgb(0, 174, 255);
+		}
 	}
 }
 .cardItem:hover {
 	background-color: rgb(228, 228, 228);
-	.carditem__editButton {
-		border: 1px solid red;
+	.carditem__editButton,
+	.carditem__saveButton,
+	.carditem__deleteButton {
 		visibility: visible;
 	}
 }
+
+.cardItem.active {
+	background-color: rgb(228, 228, 228);
+	.carditem__editButton,
+	.carditem__saveButton,
+	.carditem__deleteButton {
+		visibility: visible;
+	}
+}
+
 .costAnalysis {
 	position: absolute;
 	height: 50px;

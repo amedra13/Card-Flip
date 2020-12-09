@@ -10,7 +10,6 @@ const Inventory = (props) => {
 	return (
 		<div className="inventory mainContent">
 			<ul className="inventory__description">
-				<li></li>
 				<li>Year</li>
 				<li>Brand</li>
 				<li>Parallel</li>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import db from '../../../database';
-// import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 
 const CardItem = ({ card, id }) => {
@@ -32,15 +33,7 @@ const CardItem = ({ card, id }) => {
 	};
 
 	return (
-		<form className="cardItem">
-			{!editing ? (
-				<EditIcon
-					className="carditem__editButton"
-					onClick={() => setEditing(true)}
-				/>
-			) : (
-				<SaveIcon className="carditem__editButton" onClick={() => editCard()} />
-			)}
+		<form className={`cardItem ${editing && `active`}`}>
 			<input
 				type="text"
 				value={year}
@@ -77,6 +70,25 @@ const CardItem = ({ card, id }) => {
 				disabled={!editing}
 				onChange={(e) => setCost(e.target.value)}
 			/>
+			{!editing ? (
+				<>
+					<IconButton className="carditem__editButton">
+						<EditIcon onClick={() => setEditing(true)} />
+					</IconButton>
+					<IconButton className="carditem__deleteButton">
+						<DeleteIcon />
+					</IconButton>
+				</>
+			) : (
+				<>
+					<IconButton className="carditem__saveButton">
+						<SaveIcon onClick={() => editCard()} />
+					</IconButton>
+					<IconButton className="carditem__deleteButton">
+						<DeleteIcon />
+					</IconButton>
+				</>
+			)}
 		</form>
 	);
 };

@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-const CostAnalysis = ({ inventory }) => {
-	const [totalCost, setTotalCost] = useState(0);
-
-	useEffect(() => {
-		let cost = inventory.reduce((cost, item) => (cost += item.cost), 0);
-		setTotalCost(cost.toFixed(2));
-	}, [inventory]);
-
+const CostAnalysis = (props) => {
 	return (
 		<div className="costAnalysis">
 			<div className="cost">
 				<h4>Cost:</h4>
-				<h4>${totalCost}</h4>
+				<h4>${props.cost}</h4>
 			</div>
 		</div>
 	);
 };
 
-export default CostAnalysis;
+const mapStateToProps = (state) => {
+	return {
+		cost: state.cost,
+	};
+};
+export default connect(mapStateToProps)(CostAnalysis);
