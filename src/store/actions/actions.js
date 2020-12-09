@@ -10,3 +10,10 @@ export const setInventory = (data) => {
 		inventory: data,
 	};
 };
+
+export const setCost = (totalCost) => {
+	return {
+		type: 'SET_COST',
+		cost: totalCost,
+	};
+};

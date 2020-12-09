@@ -1,6 +1,7 @@
 const initialState = {
 	addCard: false,
 	inventory: [],
+	cost: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -9,6 +10,8 @@ const rootReducer = (state = initialState, action) => {
 			return { ...state, addCard: !state.addCard };
 		case 'SET_INVENTORY':
 			return { ...state, inventory: action.inventory };
+		case 'SET_COST':
+			return { ...state, cost: action.cost };
 		default:
 			return state;
 	}
