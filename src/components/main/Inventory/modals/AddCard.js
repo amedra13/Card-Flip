@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../../store/actions/actions';
-import db from '../../../database';
+import * as actions from '../../../../store/actions/actions';
+import db from '../../../../database';
 
 const AddCard = (props) => {
 	const [year, setYear] = useState('');
@@ -27,7 +27,6 @@ const AddCard = (props) => {
 			cost: Number(cost),
 			sold: false,
 			salePrice: 0,
-			profit: 0,
 			id: id,
 		};
 		db.collection('inventory')

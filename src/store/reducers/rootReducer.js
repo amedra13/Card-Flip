@@ -2,12 +2,15 @@ const initialState = {
 	addCard: false,
 	inventory: [],
 	cost: 0,
+	sellCard: false,
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'ADD_CARD':
 			return { ...state, addCard: !state.addCard };
+		case 'SELL_CARD':
+			return { ...state, sellCard: !state.sellCard };
 		case 'SET_INVENTORY':
 			return { ...state, inventory: action.inventory };
 		case 'SET_COST':

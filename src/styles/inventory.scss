@@ -8,7 +8,7 @@
 
 @mixin grid_columns {
 	display: grid;
-	grid-template-columns: repeat(6, 1fr) 50px 50px;
+	grid-template-columns: 50px repeat(6, 1fr) 50px 50px;
 }
 
 .inventory {
@@ -39,6 +39,9 @@
 	padding-top: 45px;
 	border-radius: 5px;
 	background-color: rgba(255, 255, 255, 0.527);
+	.inventory__addIcon {
+		color: rgba(0, 255, 127, 1);
+	}
 }
 
 .cardItem {
@@ -50,9 +53,7 @@
 	margin: 5px auto;
 	transition: all 100ms ease-in-out;
 	input {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		text-align: center;
 		border: none;
 		border-radius: 5px;
 		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.23);
@@ -65,7 +66,7 @@
 	.carditem__editButton {
 		@include button_base;
 		:hover {
-			color: rgb(6, 180, 6);
+			color: rgb(0, 174, 255);
 		}
 	}
 	.carditem__deleteButton {
@@ -80,21 +81,29 @@
 			color: rgb(0, 174, 255);
 		}
 	}
+	.carditem__saleButton {
+		@include button_base;
+		:hover {
+			color: rgb(6, 207, 6);
+		}
+	}
 }
 .cardItem:hover {
-	background-color: rgb(228, 228, 228);
+	background-color: rgb(214, 214, 214);
 	.carditem__editButton,
 	.carditem__saveButton,
-	.carditem__deleteButton {
+	.carditem__deleteButton,
+	.carditem__saleButton {
 		visibility: visible;
 	}
 }
 
 .cardItem.active {
-	background-color: rgb(228, 228, 228);
+	background-color: rgb(214, 214, 214);
 	.carditem__editButton,
 	.carditem__saveButton,
-	.carditem__deleteButton {
+	.carditem__deleteButton,
+	.carditem__saleButton {
 		visibility: visible;
 	}
 }
@@ -105,7 +114,6 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: rgb(0, 255, 127);
 	background: linear-gradient(
 		261deg,
 		rgba(0, 255, 127, 1) 0%,

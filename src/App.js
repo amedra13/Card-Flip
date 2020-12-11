@@ -24,7 +24,7 @@ const App = (props) => {
 						const index = data.findIndex((item) => item.id === card.id);
 						data[index] = card;
 						break;
-					case 'removedx':
+					case 'removed':
 						const removedData = data.filter((item) => item.id !== card.id);
 						data = removedData;
 						break;

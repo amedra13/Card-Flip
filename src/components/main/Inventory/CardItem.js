@@ -4,8 +4,9 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
-const CardItem = ({ card, id }) => {
+const CardItem = ({ card, id, sellCard }) => {
 	const [year, setYear] = useState(card.year);
 	const [brand, setBrand] = useState(card.brand);
 	const [parallel, setParallel] = useState(card.parallel);
@@ -43,6 +44,12 @@ const CardItem = ({ card, id }) => {
 
 	return (
 		<form className={`cardItem ${editing && `active`}`}>
+			<IconButton
+				className="carditem__saleButton"
+				onClick={() => console.log(sellCard)}
+			>
+				<MonetizationOnIcon />
+			</IconButton>
 			<input
 				type="text"
 				value={year}

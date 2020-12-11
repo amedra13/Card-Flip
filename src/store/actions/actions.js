@@ -3,6 +3,11 @@ export const addCard = () => {
 		type: 'ADD_CARD',
 	};
 };
+export const sellCard = () => {
+	return {
+		type: 'SELL_CARD',
+	};
+};
 
 export const setInventory = (data) => {
 	return {

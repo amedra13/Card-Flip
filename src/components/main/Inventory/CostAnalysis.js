@@ -6,7 +6,7 @@ const CostAnalysis = (props) => {
 		<div className="costAnalysis">
 			<div className="cost">
 				<h4>Cost:</h4>
-				<h4>${props.cost}</h4>
+				<h4>${props.cost.toFixed(2)}</h4>
 			</div>
 		</div>
 	);
