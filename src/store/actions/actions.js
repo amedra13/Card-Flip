@@ -3,7 +3,7 @@ export const addCard = () => {
 		type: 'ADD_CARD',
 	};
 };
-export const sellCard = () => {
+export const sellCard = (card) => {
 	return {
 		type: 'SELL_CARD',
 	};

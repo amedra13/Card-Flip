@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CardItem from './CardItem';
 import CostAnalysis from './CostAnalysis';
 import AddCard from './modals/AddCard';
-// import SellCard from './modals/SellCard';
+import SellCard from './modals/SellCard';
 import IconButton from '@material-ui/core/IconButton';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import * as actions from '../../../store/actions/actions';
@@ -24,20 +24,16 @@ const Inventory = (props) => {
 			<div className="inventory__itemContainer">
 				{props.inventory &&
 					props.inventory.map((item) => (
-						<CardItem
-							key={item.id}
-							card={item}
-							id={item.id}
-							sellCard={props.sellCard}
-						/>
+						<CardItem key={item.id} card={item} id={item.id} />
 					))}
 				{props.inventory.length > 0 && (
 					<CostAnalysis inventory={props.inventory} />
 				)}
-				<IconButton onClick={() => props.onSellCard()}>
+				<IconButton onClick={() => props.onAddCard()}>
 					<AddCircleIcon className="inventory__addIcon" fontSize="large" />
 				</IconButton>
 				{props.addCard && <AddCard />}
+				{props.sellCard && <SellCard card={props.selectedCard} />}
 			</div>
 		</div>
 	);
@@ -53,7 +49,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onAddCard: () => dispatch(actions.addCard()),
-		onSellCard: () => dispatch(actions.sellCard()),
 	};
 };
 

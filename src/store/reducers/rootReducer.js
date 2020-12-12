@@ -10,7 +10,10 @@ const rootReducer = (state = initialState, action) => {
 		case 'ADD_CARD':
 			return { ...state, addCard: !state.addCard };
 		case 'SELL_CARD':
-			return { ...state, sellCard: !state.sellCard };
+			return {
+				...state,
+				sellCard: !state.sellCard,
+			};
 		case 'SET_INVENTORY':
 			return { ...state, inventory: action.inventory };
 		case 'SET_COST':

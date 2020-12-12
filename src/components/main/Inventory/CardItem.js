@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import db from '../../../database';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import * as actions from '../../../store/actions/actions';
 
-const CardItem = ({ card, id, sellCard }) => {
-	const [year, setYear] = useState(card.year);
-	const [brand, setBrand] = useState(card.brand);
-	const [parallel, setParallel] = useState(card.parallel);
-	const [name, setName] = useState(card.name);
-	const [grade, setGrade] = useState(card.grade);
-	const [cost, setCost] = useState(card.cost);
+const CardItem = (props) => {
+	const [year, setYear] = useState(props.card.year);
+	const [brand, setBrand] = useState(props.card.brand);
+	const [parallel, setParallel] = useState(props.card.parallel);
+	const [name, setName] = useState(props.card.name);
+	const [grade, setGrade] = useState(props.card.grade);
+	const [cost, setCost] = useState(props.card.cost);
 
 	const [editing, setEditing] = useState(false);
 
@@ -26,7 +28,7 @@ const CardItem = ({ card, id, sellCard }) => {
 			cost: Number(cost),
 		};
 		db.collection('inventory')
-			.doc(id)
+			.doc(props.id)
 			.update(updateCard)
 			.then((res) => {
 				setEditing(false);
@@ -35,19 +37,28 @@ const CardItem = ({ card, id, sellCard }) => {
 
 	const deleteCard = () => {
 		db.collection('inventory')
-			.doc(id)
+			.doc(props.id)
 			.delete()
 			.then((res) => {
 				console.log(`Deleted Card Item`);
 			});
 	};
 
+	// const sellCard = () => {
+	// 	props.onSellCard();
+
+	// 	db.collection('inventory')
+	// 		.doc(props.id)
+	// 		.update({
+	// 			sold: true,
+	// 		})
+	// 		.then((res) => {
+	// 			props.onSellCard();
+	// 		});
+	// };
 	return (
 		<form className={`cardItem ${editing && `active`}`}>
-			<IconButton
-				className="carditem__saleButton"
-				onClick={() => console.log(sellCard)}
-			>
+			<IconButton className="carditem__saleButton">
 				<MonetizationOnIcon />
 			</IconButton>
 			<input
@@ -121,4 +132,9 @@ const CardItem = ({ card, id, sellCard }) => {
 	);
 };
 
-export default CardItem;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onSellCard: () => dispatch(actions.sellCard()),
+	};
+};
+export default connect(null, mapDispatchToProps)(CardItem);
