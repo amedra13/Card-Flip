@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import '../../../../styles/modals.scss';
 import * as actions from '../../../../store/actions/actions';
 import db from '../../../../database';
@@ -21,19 +22,21 @@ const SellCard = (props) => {
 
 	return (
 		<div className="modal__sellCard">
-			<form>
-				<h1>
-					Congradulation! How much was the {props.player.year}{' '}
-					{props.player.brand} {props.player.name} sold for??
-				</h1>
-				<label htmlFor="salePrice">Sale Price: </label>
+			<h1>Congratulations!</h1>
+			<h2>
+				How much was the <span>{props.player.year}</span>{' '}
+				<span>{props.player.brand}</span> <span>{props.player.name}</span> sold
+				for??
+			</h2>
+			<div>
+				<h4>Sale Price: </h4>
 				<input
 					type="number"
 					value={salePrice}
 					onChange={(e) => setSalePrice(e.target.value)}
 				/>
-			</form>
-			<button onClick={() => submitHandler(props.player.id)}>Sell Card</button>
+			</div>
+			<Button onClick={() => submitHandler(props.player.id)}>Sell Card</Button>
 		</div>
 	);
 };

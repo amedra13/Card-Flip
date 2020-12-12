@@ -1,5 +1,35 @@
 .modal__sellCard {
-	color: orange;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 	z-index: 10;
-	font-size: 30px;
+	width: 50%;
+	height: 70%;
+	top: 0;
+	background-color: var(--main-shade);
+	border: 2px solid var(--main-text);
+	border-radius: 5px;
+	span {
+		font-style: italic;
+		color: var(--main-text);
+	}
+	div {
+		width: 70%;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	input {
+		text-align: center;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.23);
+		margin: 10px 5px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: var(--main-font);
+	}
 }

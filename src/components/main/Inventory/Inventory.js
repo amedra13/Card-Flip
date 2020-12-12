@@ -29,7 +29,7 @@ const Inventory = (props) => {
 				{props.inventory.length > 0 && (
 					<CostAnalysis inventory={props.inventory} />
 				)}
-				<IconButton onClick={() => console.log(props.sellCard, props.player)}>
+				<IconButton onClick={() => props.onAddCard()}>
 					<AddCircleIcon className="inventory__addIcon" fontSize="large" />
 				</IconButton>
 				{props.addCard && <AddCard />}
