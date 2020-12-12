@@ -3,9 +3,10 @@ export const addCard = () => {
 		type: 'ADD_CARD',
 	};
 };
-export const sellCard = (card) => {
+export const sellCard = (player) => {
 	return {
 		type: 'SELL_CARD',
+		player: player,
 	};
 };
 

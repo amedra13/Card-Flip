@@ -58,7 +58,17 @@ const CardItem = (props) => {
 	// };
 	return (
 		<form className={`cardItem ${editing && `active`}`}>
-			<IconButton className="carditem__saleButton">
+			<IconButton
+				className="carditem__saleButton"
+				onClick={() =>
+					props.onSellCard({
+						year: year,
+						brand: brand,
+						name: name,
+						id: props.id,
+					})
+				}
+			>
 				<MonetizationOnIcon />
 			</IconButton>
 			<input
@@ -134,7 +144,7 @@ const CardItem = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onSellCard: () => dispatch(actions.sellCard()),
+		onSellCard: (player) => dispatch(actions.sellCard(player)),
 	};
 };
 export default connect(null, mapDispatchToProps)(CardItem);

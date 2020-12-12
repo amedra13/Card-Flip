@@ -29,11 +29,11 @@ const Inventory = (props) => {
 				{props.inventory.length > 0 && (
 					<CostAnalysis inventory={props.inventory} />
 				)}
-				<IconButton onClick={() => props.onAddCard()}>
+				<IconButton onClick={() => console.log(props.sellCard, props.player)}>
 					<AddCircleIcon className="inventory__addIcon" fontSize="large" />
 				</IconButton>
 				{props.addCard && <AddCard />}
-				{props.sellCard && <SellCard card={props.selectedCard} />}
+				{props.sellCard && <SellCard />}
 			</div>
 		</div>
 	);
@@ -44,6 +44,7 @@ const mapStateToProps = (state) => {
 		addCard: state.addCard,
 		inventory: state.inventory,
 		sellCard: state.sellCard,
+		player: state.player,
 	};
 };
 const mapDispatchToProps = (dispatch) => {
