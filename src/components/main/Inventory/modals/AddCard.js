@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import * as actions from '../../../../store/actions/actions';
 import db from '../../../../database';
 
@@ -38,7 +38,10 @@ const AddCard = (props) => {
 	};
 	return (
 		<div className="addCard">
-			<h2>Add Card Information</h2>
+			<div className="addCard__title">
+				<PersonAddIcon />
+				<h3>Add Card Information</h3>
+			</div>
 			<form onSubmit={submitHandler} className="addCard__form">
 				<div>
 					<label htmlFor="year">Year</label>
@@ -100,8 +103,10 @@ const AddCard = (props) => {
 						required
 					/>
 				</div>
-				<button type="submit">Add Card to Inventory</button>
-				<button onClick={() => props.onClose()}>Close</button>
+				<div className="addCard__formFooter">
+					<button type="submit">Add Card to Inventory</button>
+					<button onClick={() => props.onClose()}>Close</button>
+				</div>
 			</form>
 		</div>
 	);
