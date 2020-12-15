@@ -34,7 +34,6 @@ const App = (props) => {
 			});
 
 			props.onSetInventory(data);
-			props.onSetCost(data);
 		});
 	}, [props]);
 	return (
@@ -58,7 +57,6 @@ const App = (props) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onSetInventory: (data) => dispatch(actions.setInventory(data)),
-		onSetCost: (data) => dispatch(actions.setCost(data)),
 	};
 };
 

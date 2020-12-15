@@ -17,9 +17,7 @@ const rootReducer = (state = initialState, action) => {
 				player: action.player,
 			};
 		case 'SET_INVENTORY':
-			return { ...state, inventory: action.inventory };
-		case 'SET_COST':
-			return { ...state, cost: action.cost };
+			return { ...state, inventory: action.inventory, cost: action.cost };
 		default:
 			return state;
 	}

@@ -11,16 +11,11 @@ export const sellCard = (player) => {
 };
 
 export const setInventory = (data) => {
+	let unSoldInventory = data.filter((item) => item.sold === false);
+	let cost = unSoldInventory.reduce((cost, item) => (cost += item.cost), 0);
 	return {
 		type: 'SET_INVENTORY',
-		inventory: data,
-	};
-};
-
-export const setCost = (data) => {
-	let totalCost = data.reduce((cost, item) => (cost += item.cost), 0);
-	return {
-		type: 'SET_COST',
-		cost: totalCost,
+		inventory: unSoldInventory,
+		cost: cost,
 	};
 };
