@@ -43,19 +43,6 @@ const CardItem = (props) => {
 				console.log(`Deleted Card Item`);
 			});
 	};
-
-	// const sellCard = () => {
-	// 	props.onSellCard();
-
-	// 	db.collection('inventory')
-	// 		.doc(props.id)
-	// 		.update({
-	// 			sold: true,
-	// 		})
-	// 		.then((res) => {
-	// 			props.onSellCard();
-	// 		});
-	// };
 	return (
 		<form className={`cardItem ${editing && `active`}`}>
 			<IconButton

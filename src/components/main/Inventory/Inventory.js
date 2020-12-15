@@ -10,6 +10,8 @@ import * as actions from '../../../store/actions/actions';
 import '../../../styles/inventory.scss';
 
 const Inventory = (props) => {
+	let unsoldInventory = props.inventory?.filter((item) => item.sold === false);
+
 	return (
 		<div className="inventory mainContent">
 			<ul className="inventory__description">
@@ -22,10 +24,12 @@ const Inventory = (props) => {
 				<li>Cost</li>
 			</ul>
 			<div className="inventory__itemContainer">
-				{props.inventory?.map((item) => (
+				{unsoldInventory?.map((item) => (
 					<CardItem key={item.id} card={item} id={item.id} />
 				))}
-				{props.inventory.length > 0 && <CostAnalysis />}
+				{unsoldInventory.length > 0 && (
+					<CostAnalysis inventory={unsoldInventory} />
+				)}
 				<IconButton onClick={() => props.onAddCard()}>
 					<AddCircleIcon className="inventory__addIcon" fontSize="large" />
 				</IconButton>

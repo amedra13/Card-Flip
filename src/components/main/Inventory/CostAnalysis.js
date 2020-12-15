@@ -1,20 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-const CostAnalysis = (props) => {
+const CostAnalysis = ({ inventory }) => {
+	let unsoldCost = inventory?.reduce((total, item) => (total += item.cost), 0);
 	return (
 		<div className="costAnalysis">
 			<div className="cost">
 				<h4>Cost:</h4>
-				<h4>${props.cost.toFixed(2)}</h4>
+				<h4>${unsoldCost.toFixed(2)}</h4>
 			</div>
 		</div>
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		cost: state.cost,
-	};
-};
-export default connect(mapStateToProps)(CostAnalysis);
+export default CostAnalysis;

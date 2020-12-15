@@ -1,7 +1,6 @@
 const initialState = {
 	addCard: false,
 	inventory: [],
-	cost: 0,
 	sellCard: false,
 	player: null,
 };
@@ -17,7 +16,7 @@ const rootReducer = (state = initialState, action) => {
 				player: action.player,
 			};
 		case 'SET_INVENTORY':
-			return { ...state, inventory: action.inventory, cost: action.cost };
+			return { ...state, inventory: action.inventory };
 		default:
 			return state;
 	}

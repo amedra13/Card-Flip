@@ -5,6 +5,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import Header from './components/header/Header';
 import Dashboard from './components/main/Dashboard/Dashboard';
 import Inventory from './components/main//Inventory/Inventory';
+import Sales from './components/main/Sales/Sales';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import * as actions from './store/actions/actions';
 import db from './database';
@@ -47,6 +48,9 @@ const App = (props) => {
 					</Route>
 					<Route path="/Inventory">
 						<Inventory />
+					</Route>
+					<Route path="/Sales">
+						<Sales />
 					</Route>
 				</Switch>
 			</div>

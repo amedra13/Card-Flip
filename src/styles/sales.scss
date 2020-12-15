@@ -1,0 +1,133 @@
+@import './mainContent.scss';
+@mixin button_base {
+	width: 100%;
+	align-self: center;
+	visibility: hidden;
+}
+
+@mixin grid_columns {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr) 50px 50px;
+}
+.sales {
+	position: relative;
+}
+.sales__header {
+	@include grid_columns;
+	position: absolute;
+	width: 100%;
+	background-color: var(--main-shade);
+	height: 50px;
+	padding: 0;
+	li {
+		list-style-type: none;
+		margin: 10px 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bold;
+		font-family: var(--main-font);
+	}
+}
+.sales__itemContainer {
+	height: 100%;
+	width: 100%;
+	padding-top: 45px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.527);
+}
+.soldItem {
+	@include grid_columns;
+	background-color: var(--main-text);
+	border-radius: 3px;
+	padding: 0;
+	width: 100%;
+	margin: 5px auto;
+	transition: all 100ms ease-in-out;
+	input {
+		text-align: center;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.23);
+		margin: 10px 5px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: var(--main-font);
+	}
+	.solditem__editButton {
+		@include button_base;
+		:hover {
+			color: rgb(0, 174, 255);
+		}
+	}
+	.solditem__deleteButton {
+		@include button_base;
+		:hover {
+			color: rgb(240, 51, 51);
+		}
+	}
+	.solditem__saveButton {
+		@include button_base;
+		:hover {
+			color: rgb(0, 174, 255);
+		}
+	}
+	.solditem__saleButton {
+		@include button_base;
+		:hover {
+			color: rgb(6, 207, 6);
+		}
+	}
+}
+
+.soldItem:hover {
+	background-color: rgb(214, 214, 214);
+	.solditem__editButton,
+	.solditem__saveButton,
+	.solditem__deleteButton,
+	.solditem__saleButton {
+		visibility: visible;
+	}
+}
+
+.soldItem.active {
+	background-color: rgb(214, 214, 214);
+	.solditem__editButton,
+	.solditem__saveButton,
+	.solditem__deleteButton,
+	.solditem__saleButton {
+		visibility: visible;
+	}
+}
+
+.profitGain {
+	background-color: rgb(214, 253, 214);
+}
+
+.profitLoss {
+	background-color: rgb(255, 215, 215);
+}
+
+.salesAnalysis {
+	position: absolute;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	bottom: 0;
+	width: 100%;
+	background-color: rgb(146, 242, 255);
+}
+
+.salesAnalysis__section {
+	width: 100px;
+	height: 100%;
+	h4:first-child {
+		color: rgb(55, 0, 128);
+		font-style: italic;
+		font-weight: 500;
+	}
+	h4:last-child {
+		font-family: var(--main-font);
+	}
+}
